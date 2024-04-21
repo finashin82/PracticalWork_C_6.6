@@ -21,8 +21,7 @@ namespace PracticalWork_C_6._6
         static void WorkerWriter(string id, string date,string fio, string age, string height, string birthDate, string birthPlace)
         {
             using (StreamWriter sw = new StreamWriter("Worker.txt", true, Encoding.Unicode))
-            {
-                DateTime dateAddWorker = DateTime.Now;
+            {                
                 string note = id + "#" + date + "#" + fio + "#" + age + 
                             "#" + height + "#" + birthDate + "#" + birthPlace;
                 sw.WriteLine(note);
