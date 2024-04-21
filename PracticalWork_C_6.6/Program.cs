@@ -83,8 +83,8 @@ namespace PracticalWork_C_6._6
 
             } while (char.ToLower(key) == 'д');
 
-            Console.Clear();
             Console.ReadKey();
+            Console.Clear();            
         }
 
         /// <summary>
