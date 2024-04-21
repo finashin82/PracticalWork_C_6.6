@@ -18,12 +18,11 @@ namespace PracticalWork_C_6._6
         /// <param name="height"></param>
         /// <param name="birthDate"></param>
         /// <param name="birthPlace"></param>
-        static void WorkerWriter(string id, string date,string fio, string age, string height, string birthDate, string birthPlace)
-        {
-            using (StreamWriter sw = new StreamWriter("Worker.txt", true, Encoding.Unicode))
+        static void WorkerWriter(string id, string date, string fio, string age, string height, string birthDate, string birthPlace)
+        {           
+            using (StreamWriter sw = new StreamWriter(nameFileWorker, true, Encoding.Unicode))
             {                
-                string note = id + "#" + date + "#" + fio + "#" + age + 
-                            "#" + height + "#" + birthDate + "#" + birthPlace;
+                string note = String.Join("#", id, date, fio, age, height, birthDate, birthPlace);                
                 sw.WriteLine(note);
             }
         }
@@ -93,7 +92,7 @@ namespace PracticalWork_C_6._6
         static void WorkerDataOutput() 
         {
             // Проверяем файл на существование и если он существует, то выводим данные
-            if (File.Exists(@"Worker.txt"))
+            if (File.Exists(nameFileWorker))
             {
                 // Открывает доступ к файлу для чтения данных
                 using (StreamReader sr = new StreamReader("Worker.txt", Encoding.Unicode))
@@ -120,11 +119,16 @@ namespace PracticalWork_C_6._6
             else Console.WriteLine("Файл не найден.");
         }
 
+        /// <summary>
+        /// Название файла
+        /// </summary>
+        static string nameFileWorker = "Worker.txt";
+
         static void Main(string[] args)
         {
             Console.WriteLine("Практическая работа C# 6.6. Создать справочник <Сотрудники>");
             Console.WriteLine();
-
+            
             bool indexСycle = true;
 
             do
